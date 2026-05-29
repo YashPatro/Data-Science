@@ -42,3 +42,57 @@ print(e)
 
 print(a[(a>5) & (a<50)])
 
+#hw
+arr = np.arange(1, 21)
+
+print(arr[:5])
+print(arr[-5:])
+print(arr[::3])
+print(arr[::-1])
+
+#2
+mat = np.arange(49).reshape(7, 7)
+
+mid = mat[2:5, 2:5]
+row = mat[0, :]
+col = mat[:, -1]
+
+print("Middle 3x3:")
+print(mid)
+print("First row:")
+print(row)
+print("Last column:")
+print(col)
+
+#prac3
+arr = np.arange(1, 16)
+
+c1 = arr[arr < 8]
+c2 = arr[arr >= 10]
+c3 = arr[arr % 2 != 0]
+
+print("Values < 8:", c1)
+print("Count:", len(c1))
+
+print("Values >= 10:", c2)
+print("Count:", len(c2))
+
+print("Odd values:", c3)
+print("Count:", len(c3))
+
+#4
+lst = list(range(1, 11))
+arr = np.arange(1, 11)
+
+for i in range(len(lst)):
+    lst[i] += 5
+
+arr = arr + 5
+print("List after adding 5:", lst)
+print("Array after adding 5:", arr)
+
+arr = arr * 3
+print("Array after multiplying by 3:", arr)
+
+arr = arr - 2
+print("Array after subtracting 2:", arr)
