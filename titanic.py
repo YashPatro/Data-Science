@@ -9,6 +9,53 @@ print(pdata)
 
 #slicing same as numpy 2d slicing
 print(data.iloc[9:25,2:6])
-data.iloc[0:3,3] = 'Yash Patro'
+# data.iloc[0:3,3] = 'Yash Patro'
 print(data)
-data.to_csv('newTitanic.csv')
+# data.to_csv('newTitanic.csv')
+
+#18/06/26
+
+#creating a new column 
+
+data['test'] = data['Pclass']*2
+dataRenamed = data.rename(
+    columns= {
+        'Pclass':'PassengerClass',
+        'Sibsp':'Siblings'
+
+    } 
+)
+print(dataRenamed.info())
+
+#performing mathematicall operator on multiple columns
+print(data['Age'].mean())
+print()
+print(data[['Age','Fare']].mean(0))
+
+print()
+
+print(data.agg({
+    'Age':['min','max','median'],
+    'Fare':['min','max','median']
+    
+
+}))
+
+#gourp by data categorically 
+
+print(data[['Sex','Age']].groupby('Sex').mean())
+
+print(data.groupby('Sex')['Age'].mean())
+
+#to get the mean ticket price for each gender and the cabin class combination
+
+print(data.groupby(['Sex','Pclass'])['Fare'].mean())
+
+#counting rows in each category
+print(data)
+print(data['Name'].value_counts())
+
+print(data.groupby('Pclass')['Pclass'].count())
+print(data.groupby('Sex')['Pclass'].count())
+
+print(data.sort_values(by = ['Pclass','Age'],ascending=False))
