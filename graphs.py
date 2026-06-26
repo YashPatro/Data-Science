@@ -49,3 +49,24 @@ plt.show()
 plt.bar(m,n,color = 'b')
 plt.bar(n,y,color = 'r')
 plt.show()
+
+#hw
+
+x = np.arange(-5, 5, 0.1)
+
+y = x
+z = x**2
+a = x**3
+
+plt.plot(x, y, 'g-', label='y = x')
+plt.plot(x, z, 'b--', label='y = x**2')
+plt.plot(x, a, 'r:', label='y = x**3', linewidth=4)
+
+plt.axis([-10, 10, -10, 10])
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Linear Quadratic and Cubic Graphs')
+plt.legend()
+
+plt.show()
