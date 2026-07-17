@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier 
 from sklearn import metrics 
 
+from sklearn.preprocessing import StandardScaler
 data = pd.read_csv('iris.csv')
 print(data.head())
 print()
@@ -30,3 +31,13 @@ X = data.drop('species',axis = 1)
 Xtrain,Ytrain,Xtest,Ytest = train_test_split(X,Y,test_size = 0.3,random_state=1)
 print(Xtrain.shape)
 print(Xtrain)
+sc = StandardScaler()
+Xtrain = sc.fit_transform(Xtrain)
+Xtest = sc.transform(Xtest)
+
+model = DecisionTreeClassifier(max_depth=3,random_state=1)
+model.fit(Xtrain,Ytrain)
+
+prediction = model.predict(Xtest)
+acc = metrics.accuracy_score(prediction,Ytest)
+print(acc)
