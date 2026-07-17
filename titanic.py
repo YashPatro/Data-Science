@@ -1,5 +1,5 @@
 import pandas as pd 
-import numpy as np
+# import numpy as np
 '''data = pd.read_csv('titanic.csv')
 print(data.info())
 #gettong the particular column out of condition
@@ -106,28 +106,54 @@ print(t["AgeGroup"].value_counts())
 print(t[["Name", "FarePerPerson", "AgeGroup"]].head())
 '''
 
-#hw
-import matplotlib.pyplot as plt
+# #hw
+# import matplotlib.pyplot as plt
+
+# data = pd.read_csv("newTitanic.csv")
+
+# hours = ["6AM","8AM","10AM","12PM","2PM","4PM","6PM","8PM"]
+# traffic = [40,80,60,50,70,120,150,90]
+
+# plt.bar(hours, traffic, label="Vehicles")
+# plt.plot(hours, traffic, marker="o", label="Traffic Growth")
+
+# peak = max(traffic)
+# index = traffic.index(peak)
+
+# plt.annotate("Peak Traffic",
+# xy=(hours[index], peak),
+# xytext=(hours[index], peak + 20),
+# arrowprops=dict(arrowstyle="->"))
+
+# plt.xlabel("Time of Day")
+# plt.ylabel("Number of Vehicles")
+# plt.title("Traffic Density Analysis")
+# plt.legend()
+
+# plt.show()
+
+
+#hw for 17/07/26
+
+import pandas as pd
 
 data = pd.read_csv("newTitanic.csv")
 
-hours = ["6AM","8AM","10AM","12PM","2PM","4PM","6PM","8PM"]
-traffic = [40,80,60,50,70,120,150,90]
+data["Age"] = data["Age"].fillna(data["Age"].mean())
 
-plt.bar(hours, traffic, label="Vehicles")
-plt.plot(hours, traffic, marker="o", label="Traffic Growth")
+data["Sex"] = data["Sex"].replace({
+    "male": 0,
+    "female": 1
+})
 
-peak = max(traffic)
-index = traffic.index(peak)
+data["Embarked"] = data["Embarked"].replace({
+    "S": 0,
+    "C": 1,
+    "Q": 2
+})
+print(data)
+Y = data["Survived"]
+X = data.drop("Survived", axis=1)
 
-plt.annotate("Peak Traffic",
-xy=(hours[index], peak),
-xytext=(hours[index], peak + 20),
-arrowprops=dict(arrowstyle="->"))
-
-plt.xlabel("Time of Day")
-plt.ylabel("Number of Vehicles")
-plt.title("Traffic Density Analysis")
-plt.legend()
-
-plt.show()
+print(X.head())
+print(Y.head())
