@@ -55,3 +55,91 @@ print(acc)
 
 # print(X_scaled)
 # print(Y.head())
+
+#hw
+#sol 1
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#data
+data = pd.read_csv("iris.csv")
+
+#2x2 dashboard
+plt.figure(figsize=(12,8))
+
+#plot1
+plt.subplot(221)
+
+for species in data["species"].unique():
+    temp = data[data["species"] == species]
+
+    plt.scatter(
+        temp["petal_length"],
+        temp["petal_width"],
+        label=species
+    )
+
+plt.xlabel("Petal Length")
+plt.ylabel("Petal Width")
+plt.title("Petal Length vs Petal Width")
+plt.legend()
+
+#plot2
+plt.subplot(222)
+
+for species in data["species"].unique():
+    temp = data[data["species"] == species]
+
+    plt.scatter(
+        temp["sepal_length"],
+        temp["sepal_width"],
+        label=species
+    )
+
+plt.xlabel("Sepal Length")
+plt.ylabel("Sepal Width")
+plt.title("Sepal Length vs Sepal Width")
+plt.legend()
+#plot3
+plt.subplot(223)
+
+for species in data["species"].unique():
+    temp = data[data["species"] == species]
+
+    plt.hist(
+        temp["sepal_width"],
+        alpha=0.5,
+        label=species
+    )
+
+plt.xlabel("Sepal Width")
+plt.ylabel("Frequency")
+plt.title("Sepal Width Distribution")
+plt.legend()
+
+
+#plot 4
+plt.subplot(224)
+
+for species in data["species"].unique():
+    temp = data[data["species"] == species]
+
+    plt.hist(
+        temp["petal_length"],
+        alpha=0.5,
+        label=species
+    )
+
+plt.xlabel("Petal Length")
+plt.ylabel("Frequency")
+plt.title("Petal Length Distribution")
+plt.legend()
+
+#Co;mmon title
+plt.suptitle("Iris Species Visual Analysis Dashboard")
+
+
+plt.tight_layout()
+
+
+plt.show()
